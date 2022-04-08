@@ -1,17 +1,36 @@
-noclip = false
-game:GetService('RunService').Stepped:connect(function()
-if noclip then
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-end
-end)
-plr = game.Players.LocalPlayer
-mouse = plr:GetMouse()
-mouse.KeyDown:connect(function(key)
+coroutine.resume(coroutine.create(SCRIPT_FZXM74_FAKESCRIPT))
+function SCRIPT_GVGT66_FAKESCRIPT() -- Noclip.Noclip 
+	local script = Instance.new('LocalScript')
+	script.Parent = Noclip
+	noclip = false
+	local Mouse = game.Players.LocalPlayer:GetMouse()
+	
+	game:GetService('RunService').Stepped:connect(function()
+		if noclip then
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		end
+	end)
+	
+	script.Parent.MouseButton1Down:connect(function()
+		noclip = not noclip
+		if noclip then
+			script.Parent.Underline.BackgroundColor3 = Color3.fromRGB(0, 255, 25)
+		else
+			script.Parent.Underline.BackgroundColor3 = Color3.fromRGB(100, 0, 255)
+		end
+	end)
+	
+	Mouse.KeyDown:Connect(function(k)
+		if k == "n" then
+			
+			noclip = not noclip
+			if noclip then
+				script.Parent.Underline.BackgroundColor3 = Color3.fromRGB(0, 255, 25)
+			else
+				script.Parent.Underline.BackgroundColor3 = Color3.fromRGB(100, 0, 255)
+			end
+			
+		end	
+	end)
 
-if key == "n" then
-noclip = not noclip
-game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
 end
-end)
-print('Loaded')
-print('Press "N" to noclip')
